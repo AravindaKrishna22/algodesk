@@ -1,0 +1,47 @@
+# ==========================================
+# SECRETS & ENVIRONMENT (CRITICAL)
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# PYTHON & VIRTUAL ENVIRONMENTS
+# ==========================================
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================================
+# ALGODESK GENERATED ARTIFACTS
+# ==========================================
+# Kill switch file
+KILL
+
+# State persistence (varies per local run)
+state/
+*.json.bak
+
+# Backtest reports and signal lists
+outputs/
+
+# Ignore all raw logs...
+logs/
+
+# ...BUT force Git to keep the evidence folder!
+!evidence/
+
+# ==========================================
+# OS & IDE SPECIFIC
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

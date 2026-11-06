@@ -1,0 +1,67 @@
+symbol: DEMO
+capital: 1000000
+
+session:
+  open: "09:15"
+  close: "15:30"
+  squareoff: "15:15"
+
+sizing:
+  lots: 2
+
+risk:
+  max_daily_loss: 20000
+  max_trades_per_day: 6
+  max_open_positions: 1
+  kill_switch_file: KILL
+
+execution:
+  same_candle_rule: stop_first
+  slippage_points: 0.05
+  order_retries: 2
+
+costs:
+  brokerage_flat: 20.0
+  brokerage_pct: 0.03
+  stt_sell_pct: 0.1
+  exchange_txn_pct: 0.03503
+  sebi_per_crore: 10.0
+  gst_pct: 18.0
+  stamp_buy_pct: 0.003
+
+paths:
+  state_dir: state
+  log_dir: logs
+  output_dir: outputs
+
+strategy_a:
+  timeframe_minutes: 2
+  sma_length: 20
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+  macd_cross_lookback: 2
+  min_body_fraction_beyond_band: 0.5
+  breakout_window_candles: 3
+  body_avg_lookback: 20
+  max_body_multiple: 2.0
+  earliest_entry: "09:45"
+  latest_entry: "14:20"
+  cooldown_minutes: 30
+  targets:
+    - [1.0, 0.5]
+    - [2.0, 1.0]
+  trail_r: 1.0
+  breakeven_after_first_target: true
+
+strategy_b:
+  timeframe_minutes: 5
+  short_emas: [3, 5, 8, 10, 12, 15]
+  long_emas: [30, 35, 40, 45, 50, 60]
+  vwma_length: 6
+  fast_lines: [vwma, ema3]
+  anchor_ema: 60
+  earliest_entry: "09:20"
+  latest_entry: "15:00"
+  protective_stop_pct: 0.5
